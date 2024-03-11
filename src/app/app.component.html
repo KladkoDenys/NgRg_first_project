@@ -1,8 +1,14 @@
-<button (click)="increase()">+1</button>
-<button [disabled]="cannotDecrease" (click)="decease()">-1</button>
-<button [disabled]="cannotDecrease" (click)="clear()">=0</button>
+<h2>Books</h2>
+<app-book-list
+  class="book-list"
+  [books]="(books$ | async)!"
+  (add)="onAdd($event)"
+></app-book-list>
 
-<p>Counter = {{ counter }}</p>
-<p *ngIf="updateAt">
-  Update at : {{ updateAt | date : "HH:mm:ss dd/MM/yyyy" }}
-</p>
+<h2>My Collection</h2>
+<app-book-collection
+  class="book-collection"
+  [books]="(bookCollection$ | async)!"
+  (remove)="onRemove($event)"
+>
+</app-book-collection>
